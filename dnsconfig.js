@@ -2,7 +2,7 @@ var regNone = NewRegistrar("none");
 var providerCf = DnsProvider(NewDnsProvider("cloudflare"));
 
 var rootDomain = 'stupid.cat';   // the Cloudflare zone
-var subdomainSuffix = 'is-a';    // we only own *.is-a.stupid.cat
+var subdomainSuffix = 'is-a';    // records land at <name>.is-a.stupid.cat
 
 var proxy = { // https://stackexchange.github.io/dnscontrol/providers/cloudflare
   on:  { "cloudflare_proxy": "on" },
@@ -11,8 +11,8 @@ var proxy = { // https://stackexchange.github.io/dnscontrol/providers/cloudflare
 
 // ---------------------------------------------------------------------------
 // helpers
-// NOTE: dnsconfig.js runs in otto (ES5). Its regex engine panics on unmatched
-// capture groups, so everything below uses plain string ops instead.
+// dnsconfig.js runs in otto (ES5) - its regex engine panics on unmatched
+// capture groups, so everything here uses plain string ops instead.
 // ---------------------------------------------------------------------------
 
 var ALLOWED_CHARS = 'abcdefghijklmnopqrstuvwxyz0123456789-_*.';
@@ -61,7 +61,7 @@ for (var idx in domains) {
   var name = domains[idx].name;
   var domainData = domains[idx].data;
 
-  // hard guard: a bad filename must never escape the is-a namespace
+  // a bad filename must never escape the is-a namespace
   if (!isValidName(name)) {
     throw "Invalid domain file name: " + name;
   }
@@ -75,47 +75,35 @@ for (var idx in domains) {
 
   if (domainData.records.A) {
     for (var a in domainData.records.A) {
-      records.push(
-        A(subdomainName, IP(domainData.records.A[a]), proxyState)
-      );
+      records.push(A(subdomainName, IP(domainData.records.A[a]), proxyState));
     }
   }
 
   if (domainData.records.AAAA) {
     for (var aaaa in domainData.records.AAAA) {
-      records.push(
-        AAAA(subdomainName, domainData.records.AAAA[aaaa], proxyState)
-      );
+      records.push(AAAA(subdomainName, domainData.records.AAAA[aaaa], proxyState));
     }
   }
 
   if (domainData.records.CNAME) {
-    records.push(
-      CNAME(subdomainName, domainData.records.CNAME + ".", proxyState)
-    );
+    records.push(CNAME(subdomainName, domainData.records.CNAME + ".", proxyState));
   }
 
   if (domainData.records.MX) {
     for (var mx in domainData.records.MX) {
-      records.push(
-        MX(subdomainName, 10, domainData.records.MX[mx] + ".")
-      );
+      records.push(MX(subdomainName, 10, domainData.records.MX[mx] + "."));
     }
   }
 
   if (domainData.records.NS) {
     for (var ns in domainData.records.NS) {
-      records.push(
-        NS(subdomainName, domainData.records.NS[ns] + ".")
-      );
+      records.push(NS(subdomainName, domainData.records.NS[ns] + "."));
     }
   }
 
   if (domainData.records.TXT) {
     for (var txt in domainData.records.TXT) {
-      records.push(
-        TXT(subdomainName, domainData.records.TXT[txt])
-      );
+      records.push(TXT(subdomainName, domainData.records.TXT[txt]));
     }
   }
 
@@ -140,22 +128,10 @@ for (var idx in domains) {
 
 // ---------------------------------------------------------------------------
 // commit
-// Everything we manage is <name>.is-a (2+ labels). Everything below is left
-// completely untouched: DNSControl will not modify or delete it.
+//
+// NO_PURGE: DNSControl adds and updates records, but never deletes.
+// Removing a domains/*.json will NOT remove the DNS record - do that by hand
+// in the Cloudflare dashboard.
 // ---------------------------------------------------------------------------
 
-D(
-  rootDomain, regNone, providerCf,
-
-  IGNORE("@"),                // apex: A, SPF, google-site-verification
-  IGNORE("?*"),               // any single-label name: a, c, www, cdn, git, fedi, send...
-                              // (also covers the bare is-a apex, which we never manage)
-
-  IGNORE("**._domainkey"),    // *._domainkey, resend._domainkey
-  IGNORE("**._dmarc"),        // _dmarc
-  IGNORE("**.a"),             // _discord.a, contrib.a, guestbook.a
-  IGNORE("**.c"),             // _discord.c
-  IGNORE("**.send"),          // send MX/SPF
-
-  records
-);
+D(rootDomain, regNone, providerCf, NO_PURGE, records);
