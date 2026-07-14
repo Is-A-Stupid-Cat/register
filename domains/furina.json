@@ -1,0 +1,10 @@
+{
+  "owner": {
+    "username": "dragsbruh",
+    "email": "dragsbruh@protonmail.com"
+  },
+  "records": {
+    "CNAME": "codeberg.page"
+  },
+  "proxied": true
+}
