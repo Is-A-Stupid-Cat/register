@@ -1,0 +1,108 @@
+name: PR Automation
+
+on:
+  pull_request_target:
+    types: [opened, labeled]
+
+permissions:
+  pull-requests: write
+  contents: write
+  issues: write
+
+jobs:
+  welcome-comment:
+    if: github.event_name == 'pull_request_target' && github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.REVIEWBOT_APP_ID }}
+          private-key: ${{ secrets.REVIEWBOT_APP_PRIVATE_KEY }}
+
+      - name: Comment on new PR
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: "👋 Thanks for opening this PR! A maintainer will review it shortly. It'll be merged once it's labelled `approved`, or closed if it's labelled with an `invalid` tag."
+            });
+
+  handle-label:
+    if: github.event_name == 'pull_request_target' && github.event.action == 'labeled'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.REVIEWBOT_APP_ID }}
+          private-key: ${{ secrets.REVIEWBOT_APP_PRIVATE_KEY }}
+
+      - name: Merge on approved
+        if: github.event.label.name == 'approved'
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            await github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              merge_method: "merge"
+            });
+
+            const mergedBody = [
+              "# Pull Request Merged :tada:",
+              "",
+              "### Hosting providers",
+              "",
+              "Just make sure you have added the domain to your website. It's also a good idea to see your hosting providers' documentation to see how you can add a custom domain.",
+              "",
+              "### Webserver (like NGINX, Caddy, Apache and etc.)",
+              "",
+              "You have to add these in your webserver config by yourself. If you don't know how to add a domain to your webserver then either use a different method of hosting your website or search on a search engine on how to use the said webserver.",
+              "",
+              "Need help with your domain? If you have some trouble setting up your domain, please create an issue or ask in the Discord server and we will try and help you as soon as possible!",
+              "Made a mistake in the records? Don't worry, you can create a new pull request to correct your mistakes.",
+              "",
+              "Thanks for reading the message and thank you for using is-a.stupid.cat!"
+            ].join("\n");
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: mergedBody
+            });
+
+      - name: Close on invalid
+        if: startsWith(github.event.label.name, 'invalid')
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const label = context.payload.label.name;
+            // Supports "invalid" on its own or "invalid: some reason"
+            const reason = label.includes(":") ? label.split(":").slice(1).join(":").trim() : "";
+            const detail = reason || "an issue with your submission";
+            const body = `Your PR was not merged due to ${detail}. Please read our [docs](https://docs.is-a.stupid.cat) and try again. You can always ask us to recheck.`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body
+            });
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              state: "closed"
+            });
