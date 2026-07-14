@@ -1,9 +1,11 @@
 var regNone = NewRegistrar("none");
 var providerCf = DnsProvider(NewDnsProvider("cloudflare"));
 
-var rootDomain = 'is-a.stupid.cat';
+var rootDomain = 'stupid.cat';      // the zone DNSControl manages
+var subdomainSuffix = 'is-a';       // every record lives under *.is-a.stupid.cat
+
 var proxy = { // https://stackexchange.github.io/dnscontrol/providers/cloudflare
-  on: { "cloudflare_proxy": "on" },
+  on:  { "cloudflare_proxy": "on" },
   off: { "cloudflare_proxy": "off" }
 }
 
@@ -13,7 +15,6 @@ function getDomainsList(filesPath) {
 
   for (var i = 0; i < files.length; i++) {
     var name = files[i].split("/").pop().replace(/\.json$/, "");
-
     result.push({ name: name, data: require(files[i]) });
   }
 
@@ -24,7 +25,8 @@ var domains = getDomainsList('./domains');
 var commit = [];
 
 for (var idx in domains) {
-  var subdomainName = domains[idx].name;
+  // example.json -> "example.is-a" -> example.is-a.stupid.cat
+  var subdomainName = domains[idx].name + '.' + subdomainSuffix;
   var domainData = domains[idx].data;
   var proxyState = proxy.off; // disabled by default
 
@@ -57,13 +59,13 @@ for (var idx in domains) {
       CNAME(subdomainName, domainData.records.CNAME + ".", proxyState)
     )
   }
-  
+
   if (domainData.records.MX) {
     for (var mx in domainData.records.MX) {
       commit[domainData.domain].push(
         MX(subdomainName, 10, domainData.records.MX[mx] + ".")
       )
-    }  
+    }
   }
 
   if (domainData.records.NS) {
@@ -91,7 +93,7 @@ for (var idx in domains) {
     }
   }
 
-    if (domainData.records.DS) {
+  if (domainData.records.DS) {
     for (var ds in domainData.records.DS) {
       var dsRecords = domainData.records.DS[ds];
       commit[domainData.domain].push(
@@ -101,6 +103,10 @@ for (var idx in domains) {
   }
 }
 
+// flatten everything into one D() call for the zone
+var allRecords = [];
 for (var domainName in commit) {
-  D(rootDomain, regNone, providerCf, commit);
+  allRecords = allRecords.concat(commit[domainName]);
 }
+
+D(rootDomain, regNone, providerCf, allRecords);
