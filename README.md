@@ -18,7 +18,7 @@
 ## Issues
 If you have any problems, feel free to [open an issue](https://github.com/is-a-stupid-cat/register/issues/new/choose).
 
-If you have an issue, please send a email to support@is-a.stupid.cat.
+If you have an issue, please [open an issue](https://github.com/is-a-stupid-cat/register/issues/new/choose).
 
 If you have a technical issue, please join our [Discord server](https://discord.gg/aVzSvXCy5v)!
 
