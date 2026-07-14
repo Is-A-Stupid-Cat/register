@@ -60,7 +60,7 @@ If you have a technical issue, please join our [Discord server](https://discord.
 > [!NOTE]
 > Only select the records you need, this is just an example of all the records we support.
 
-4. Make a pull request to the repo and wait for it to be merged, if you don't know how to make a pull request please read [GitHub's guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). If you want the pull request to be merged faster then consider joining [our Discord server](https://discord.gg/ZtcFe2s7St)!
+4. Make a pull request to the repo and wait for it to be merged, if you don't know how to make a pull request please read [GitHub's guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). If you want the pull request to be merged faster then consider joining [our Discord server](https://discord.gg/aVzSvXCy5v)!
 5. After the pull request is merged, the DNS records should propagate within 24 hours.
 6. That's all, enjoy your `is-a.stupid.cat` subdomain!
 
