@@ -1,0 +1,13 @@
+{
+    "description": "example",
+    "owner": {
+        "repo": "https://github.com/is-a-stupid-cat/register",
+        "email": ""
+    },
+
+    "records": {
+        "A": ["192.3.34.74"]
+    },
+
+    "proxied": false
+}
