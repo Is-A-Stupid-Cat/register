@@ -68,4 +68,4 @@ If you have a technical issue, please join our [Discord server](https://discord.
 Our documentation is available [here](https://docs.is-a.stupid.cat)!
 
 ### Similar Services
-If you want to find services that are similar to is-a.stupid.cat, please check out [Open Domains](https://github.com/open-domains/register), [is-a.dev](https://github.com/is-a-dev/register), [part-of.my.id](https://github.com/partofmyid/register), [is-a.stupid.cat](https://github.com/is-not-cool/registration) and any other subdomain provider available to the world.
+If you want to find services that are similar to is-a.stupid.cat, please check out [Open Domains](https://github.com/open-domains/register), [is-a.dev](https://github.com/is-a-dev/register), [part-of.my.id](https://github.com/partofmyid/register), [is-not.cool](https://github.com/is-not-cool/registration) and any other subdomain provider available to the world.
