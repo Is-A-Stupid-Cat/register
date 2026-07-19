@@ -23,7 +23,7 @@ If you have an issue, please [open an issue](https://github.com/is-a-stupid-cat/
 If you have a technical issue, please join our [Discord server](https://discord.gg/aVzSvXCy5v)!
 
 ## Register
-1. Fork [the repository](https://github.com/is-a-stupud-cat/register/fork).
+1. Fork [the repository](https://github.com/Is-A-Stupid-Cat/register/fork).
 2. Make a json file in the `domains` directory, for example `example.json`.
 3. Add the following file format to the json you just made:
 ```json
