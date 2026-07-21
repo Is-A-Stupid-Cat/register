@@ -5,7 +5,8 @@
     "repo": "https://github.com/interverti/riwen.is-a.stupid.cat/"
   },
   "records": {
-    "CNAME": "interverti.fr"
+    "CNAME": "interverti.fr",
+    "TXT": "_discord.riwen.is-a.stupid.cat=dh=c5299d33ce6fe4fd2a96dc4fd376ecba0d76d7ce"
   },
   "proxied": true
 }
