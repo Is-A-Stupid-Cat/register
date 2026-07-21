@@ -6,7 +6,7 @@
   },
   "records": {
     "CNAME": "interverti.fr",
-    "TXT" : "_discord.interverti.is-a.stupid.cat=dh=0656679f8d5e3d5d1b2086cfe2bfa81a074f2751"
+    "TXT" : ["_discord.interverti.is-a.stupid.cat=dh=0656679f8d5e3d5d1b2086cfe2bfa81a074f2751"]
   },
   "proxied": true
 }
