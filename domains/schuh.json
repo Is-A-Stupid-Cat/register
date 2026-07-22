@@ -1,7 +1,7 @@
 {
     "owner": {
         "username": "vqpe",
-        "email": "schuh@schuh.wtf",
+        "email": "schuh@schuh.wtf"
     },
     "records": {
         "CNAME": "redirect.schuh.wtf"
