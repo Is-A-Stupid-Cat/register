@@ -1,0 +1,10 @@
+{
+    "owner": {
+        "username": "vqpe",
+        "email": "schuh@schuh.wtf",
+    },
+    "records": {
+        "CNAME": "schuh.wtf"
+    },
+    "proxied": false
+}
