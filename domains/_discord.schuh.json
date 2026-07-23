@@ -1,0 +1,10 @@
+{
+    "owner": {
+        "username": "vqpe",
+        "email": "schuh@schuh.wtf"
+    },
+    "records": {
+        "TXT": ["dh=4d8bd5c4edb13eb24a09ff5b7204d08dfaa8168b"]
+    },
+    "proxied": false
+}
