@@ -6,5 +6,5 @@
   "records": {
     "CNAME": "edge.redirect.pizza"
   },
-  "proxied": true
+  "proxied": false
 }
