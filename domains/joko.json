@@ -1,0 +1,10 @@
+{
+  "owner": {
+    "username": "jokoarynt",
+    "email": "shady-ferret-plot@duck.com"
+  },
+  "records": {
+    "CNAME": "edge.redirect.pizza"
+  },
+  "proxied": true
+}
