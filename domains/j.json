@@ -1,0 +1,10 @@
+{
+  "owner": {
+    "username": "jokoarynt",
+    "email": "speak-tarmac-lisp@duck.com"
+  },
+  "records": {
+    "CNAME": "edge.redirect.pizza"
+  },
+  "proxied": true
+}
