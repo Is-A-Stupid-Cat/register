@@ -1,0 +1,10 @@
+{
+  "owner": {
+    "username": "jokoarynt",
+    "email": "deface-lizard-art@duck.com"
+  },
+  "records": {
+    "CNAME": "edge.redirect.pizza"
+  },
+  "proxied": true
+}
