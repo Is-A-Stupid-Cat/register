@@ -1,0 +1,10 @@
+{
+  "owner": {
+    "username": "jokoarynt",
+    "email": "aim-cosmic-nemeses@duck.com"
+  },
+  "records": {
+    "CNAME": "edge.redirect.pizza"
+  },
+  "proxied": true
+}
