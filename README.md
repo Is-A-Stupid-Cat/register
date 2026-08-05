@@ -1,6 +1,6 @@
 <h1 align="center">is-a.stupid.cat</h1>
 
-<p align="center"><strong>is-a.stupid.cat</strong> is a goofy domain made by <a href="https://github.com/AriTheStupidCat">Ari</a>
+<p align="center"><strong>is-a.stupid.cat</strong> is a goofy domain made by <a href="https://github.com/FuFuUwU">Ari</a>
 <p align="center">with special thanks to <a href="https://github.com/iostpa">iostpa</a> and <a href="https://github.com/trollmeight">trollmeight</a> for making the original project that I cloned this code from lol
 
 
@@ -8,13 +8,9 @@
    <a href="https://discord.gg/aVzSvXCy5v"><img alt="Discord Server" src="https://invidget.switchblade.xyz/aVzSvXCy5v"></a>
 </p>
 
-> [!CAUTION]
-> We do not support Vercel or Cloudflare at the moment since we are not on the PSL.
+> [!WARNING]
+> We do not support Vercel at the moment since we are not on the PSL. Cloudflare does NOT work, due to recent changes meaning we'd need your NS records, and we have strict rules on who can and can't use NS records
 
-
-
- 
- 
 ## Issues
 If you have any problems, feel free to [open an issue](https://github.com/is-a-stupid-cat/register/issues/new/choose).
 
@@ -31,7 +27,7 @@ If you have a technical issue, please join our [Discord server](https://discord.
     "owner": {
         "username": "your-github-username",
         "email": "hello@example.com",
-        "repo": "your-repository-link-here"
+        "repo": "your-website's-repository-link-here"
     },
 
     "records": {
@@ -61,8 +57,11 @@ If you have a technical issue, please join our [Discord server](https://discord.
 > Only select the records you need, this is just an example of all the records we support.
 
 4. Make a pull request to the repo and wait for it to be merged, if you don't know how to make a pull request please read [GitHub's guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). If you want the pull request to be merged faster then consider joining [our Discord server](https://discord.gg/aVzSvXCy5v)!
-5. After the pull request is merged, the DNS records should propagate within 24 hours.
+5. After the pull request is merged, the DNS records should propagate within the next 15-20 minutes, however in rarer cases, it can sometimes takes between 24-48 hours.
 6. That's all, enjoy your `is-a.stupid.cat` subdomain!
+
+> [!NOTE]
+> If your DNS has not propagated within 48 hours, please check with a [DNS Checker](https://dnschecker.org/all-dns-records-of-domain.php) before contacting us, so we can get you the best support.
 
 ## Documentation
 Our documentation is available [here](https://docs.is-a.stupid.cat)!
