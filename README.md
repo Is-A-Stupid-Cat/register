@@ -1,6 +1,6 @@
 <h1 align="center">is-a.stupid.cat</h1>
 
-<p align="center"><strong>is-a.stupid.cat</strong> is a goofy domain made by <a href="https://github.com/AriTheStupidCat">Ari</a>
+<p align="center"><strong>is-a.stupid.cat</strong> is a goofy domain made by <a href="https://github.com/FuFuUwU">Ari</a>
 <p align="center">with special thanks to <a href="https://github.com/iostpa">iostpa</a> and <a href="https://github.com/trollmeight">trollmeight</a> for making the original project that I cloned this code from lol
 
 
