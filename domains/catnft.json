@@ -1,0 +1,14 @@
+{
+    "description": "catnft — pixelated cat NFT collection dashboard",
+    "owner": {
+        "repo": "https://github.com/gCAN9/register",
+        "email": "31687044+gCAN9@users.noreply.github.com",
+        "username": "gCAN9"
+    },
+
+    "records": {
+        "A": ["76.13.0.172"]
+    },
+
+    "proxied": false
+}
