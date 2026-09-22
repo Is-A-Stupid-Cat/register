@@ -1,0 +1,12 @@
+{
+    "owner": {
+        "username": "theprojectmaker",
+        "email": "solomonsasson031@gmail.com",
+        "repo": "https://github.com/theprojectmaker/is-a-stupid-cat-register"
+    },
+
+    "records": {
+        "CNAME": "beam-gateway.pages.dev"
+    },
+    "proxied": false
+}
