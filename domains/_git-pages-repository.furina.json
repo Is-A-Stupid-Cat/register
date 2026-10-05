@@ -4,7 +4,9 @@
     "email": "dragsbruh@protonmail.com"
   },
   "records": {
-    "CNAME": "codeberg.page"
+    "TXT": [
+      "https://codeberg.org/dragsbruh/pages.git"
+    ]
   },
-  "proxied": true
+  "proxied": false
 }
