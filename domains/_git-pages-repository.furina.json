@@ -1,0 +1,12 @@
+{
+  "owner": {
+    "username": "dragsbruh",
+    "email": "dragsbruh@protonmail.com"
+  },
+  "records": {
+    "TXT": [
+      "https://codeberg.org/dragsbruh/pages.git"
+    ]
+  },
+  "proxied": false
+}

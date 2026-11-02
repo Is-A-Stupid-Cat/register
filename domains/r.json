@@ -1,0 +1,11 @@
+{
+  "owner": {
+    "username": "rabbanyhmm",
+    "email": "rabbanyhmm@gmail.com",
+    "repo": "https://github.com/rabbanyhmm/rabbanyhmm.github.io"
+  },
+  "records": {
+    "CNAME": "rabbanyhmm.github.io"
+  },
+  "proxied": false
+}
