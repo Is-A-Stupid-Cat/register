@@ -1,0 +1,11 @@
+{
+  "owner": {
+    "username": "main-safi",
+    "email": "irfansafi@proton.me",
+    "repo": "https://github.com/main-safi/safi.is-a-stupid-cat"
+  },
+  "records": {
+    "CNAME": "main-safi.github.io/safi.is-a-stupid-cat"
+  },
+  "proxied": false
+}
