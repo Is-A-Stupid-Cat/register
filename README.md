@@ -5,7 +5,7 @@
 
 
 <p align="center">
-   <a href="https://discord.gg/aVzSvXCy5v"><img alt="Discord Server" src="https://invidget.switchblade.xyz/aVzSvXCy5v"></a>
+   <a href="https://discord.gg/aVzSvXCy5v"><img alt="Discord Server" src="https://inv.doughmination.gay/aVzSvXCy5v"></a>
 </p>
 
 > [!WARNING]
