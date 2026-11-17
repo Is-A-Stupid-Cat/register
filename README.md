@@ -2,10 +2,9 @@
 
 <p align="center"><strong>is-a.stupid.cat</strong> is a goofy domain made by <a href="https://github.com/FuFuUwU">Ari</a>
 <p align="center">with special thanks to <a href="https://github.com/iostpa">iostpa</a> and <a href="https://github.com/trollmeight">trollmeight</a> for making the original project that I cloned this code from lol
-
-
+<br>
 <p align="center">
-   <a href="https://discord.gg/aVzSvXCy5v"><img alt="Discord Server" src="https://inv.doughmination.gay/aVzSvXCy5v"></a>
+   <a href="https://discord.gg/aVzSvXCy5v"><img alt="Discord Server" src="https://inv.doughmination.gay/?inviteCode=aVzSvXCy5v"></a>
 </p>
 
 > [!WARNING]
