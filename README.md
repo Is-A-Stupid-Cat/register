@@ -11,16 +11,12 @@
 > We do not support Vercel at the moment since we are not on the PSL. Cloudflare does NOT work, due to recent changes meaning we'd need your NS records, and we have strict rules on who can and can't use NS records
 
 ## Issues
-If you have any problems, feel free to [open an issue](https://github.com/is-a-stupid-cat/register/issues/new/choose).
+If you have any problems, feel free to [open an issue](https://github.com/free-names/is-a.stupid.cat/issues/new/choose).
 
-If you have an issue, please [open an issue](https://github.com/is-a-stupid-cat/register/issues/new/choose).
-
-If you have a technical issue, please join our [Discord server](https://discord.gg/aVzSvXCy5v)!
-
-Please follow our ToS, which can be found [here](https://is-a.stupid.cat/terms)
+Please follow our ToS, which can be found [here](https://free-names.org/terms)
 
 ## Register
-1. Fork [the repository](https://github.com/Is-A-Stupid-Cat/register/fork).
+1. Fork [the repository](https://github.com/free-names/is-a.stupid.cat/fork).
 2. Make a json file in the `domains` directory, for example `example.json`.
 3. Add the following file format to the json you just made:
 ```json
@@ -57,7 +53,7 @@ Please follow our ToS, which can be found [here](https://is-a.stupid.cat/terms)
 > [!NOTE]
 > Only select the records you need, this is just an example of all the records we support.
 
-4. Make a pull request to the repo and wait for it to be merged, if you don't know how to make a pull request please read [GitHub's guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork). If you want the pull request to be merged faster then consider joining [our Discord server](https://discord.gg/aVzSvXCy5v)!
+4. Make a pull request to the repo and wait for it to be merged, if you don't know how to make a pull request please read [GitHub's guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
 5. After the pull request is merged, the DNS records should propagate within the next 15-20 minutes, however in rarer cases, it can sometimes takes between 24-48 hours.
 6. That's all, enjoy your `is-a.stupid.cat` subdomain!
 
@@ -65,7 +61,7 @@ Please follow our ToS, which can be found [here](https://is-a.stupid.cat/terms)
 > If your DNS has not propagated within 48 hours, please check with a [DNS Checker](https://dnschecker.org/all-dns-records-of-domain.php) before contacting us, so we can get you the best support.
 
 ## Documentation
-Our documentation is available [here](https://docs.is-a.stupid.cat)!
+Our documentation is available [here](https://docs.free-names.org)!
 
 ### Similar Services
 If you want to find services that are similar to is-a.stupid.cat, please check out [Open Domains](https://github.com/open-domains/register), [is-a.dev](https://github.com/is-a-dev/register), [part-of.my.id](https://github.com/partofmyid/register), [is-not.cool](https://github.com/is-not-cool/registration) and any other subdomain provider available to the world.
