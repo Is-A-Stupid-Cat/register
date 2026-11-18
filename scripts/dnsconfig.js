@@ -36,6 +36,14 @@ function stripJsonExt(filename) {
   return filename;
 }
 
+function endsWith(text, suffix) {
+  return text.length >= suffix.length && text.substring(text.length - suffix.length) === suffix;
+}
+
+// Paths in glob() and require() resolve from this file's folder, not the repo root
+var reservedNames = require('../json/reserved.json');
+var disallowedCnames = require('../json/disallowed-cnames.json');
+
 function getDomainsList(filesPath) {
   var result = [];
   var files = glob.apply(null, [filesPath, true, '.json']);
@@ -54,7 +62,7 @@ function getDomainsList(filesPath) {
 // build records
 // ---------------------------------------------------------------------------
 
-var domains = getDomainsList('./domains');
+var domains = getDomainsList('../domains');
 var records = [];
 
 for (var idx in domains) {
@@ -66,6 +74,14 @@ for (var idx in domains) {
     throw "Invalid domain file name: " + name;
   }
 
+  // Reserved names belong to the project; the PR tests stop anyone else claiming free-names
+  var isProjectOwned = domainData.owner && String(domainData.owner.username).toLowerCase() === 'free-names';
+
+  if (!isProjectOwned && reservedNames.indexOf(name.split('.').pop()) !== -1) {
+    throw "Reserved domain name: " + name;
+  }
+
+  // Labels stay relative: a trailing dot would make them FQDNs outside the zone
   var subdomainName = name + '.' + subdomainSuffix;   // example -> example.is-a
   var proxyState = proxy.off;                         // disabled by default
 
@@ -86,12 +102,27 @@ for (var idx in domains) {
   }
 
   if (domainData.records.CNAME) {
+    var cnameTarget = domainData.records.CNAME.toLowerCase();
+
+    for (var bad in disallowedCnames) {
+      if (endsWith(cnameTarget, disallowedCnames[bad])) {
+        throw "Disallowed CNAME target in " + name + ": " + cnameTarget;
+      }
+    }
+
     records.push(CNAME(subdomainName, domainData.records.CNAME + ".", proxyState));
   }
 
   if (domainData.records.MX) {
     for (var mx in domainData.records.MX) {
-      records.push(MX(subdomainName, 10, domainData.records.MX[mx] + "."));
+      var mxRecord = domainData.records.MX[mx];
+
+      // MX entries are a hostname string, or { target, priority }
+      if (typeof mxRecord === "object") {
+        records.push(MX(subdomainName, mxRecord.priority, mxRecord.target + "."));
+      } else {
+        records.push(MX(subdomainName, 10, mxRecord + "."));
+      }
     }
   }
 
@@ -102,8 +133,11 @@ for (var idx in domains) {
   }
 
   if (domainData.records.TXT) {
-    for (var txt in domainData.records.TXT) {
-      records.push(TXT(subdomainName, domainData.records.TXT[txt]));
+    // TXT may be one string or an array; for-in over a string walks its characters
+    var txtValues = typeof domainData.records.TXT === "string" ? [domainData.records.TXT] : domainData.records.TXT;
+
+    for (var txt in txtValues) {
+      records.push(TXT(subdomainName, txtValues[txt]));
     }
   }
 

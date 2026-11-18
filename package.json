@@ -1,0 +1,14 @@
+{
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "test": "npx ava tests/*.test.js"
+    },
+    "ava": {
+        "failWithoutAssertions": false
+    },
+    "devDependencies": {
+        "ava": "^8.0.1",
+        "fs-extra": "^11.4.0"
+    }
+}
