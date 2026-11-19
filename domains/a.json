@@ -4,10 +4,7 @@
         "email": "",
         "username": "FuFuUwU"
     },
-
     "records": {
-        "CNAME": ["bwah.dev"]
-    },
-
-    "proxied": false
+        "CNAME": "bwah.dev"
+    }
 }
