@@ -6,7 +6,7 @@
     },
 
     "records": {
-        "CNAME": ["bwah.dev"]
+        "CNAME": "bwah.dev"
     },
 
     "proxied": false
