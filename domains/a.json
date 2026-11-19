@@ -1,14 +1,10 @@
 {
     "description": "example",
     "owner": {
-        "repo": "https://github.com/AriTheStupidCat/a.stupid.cat",
         "email": "",
         "username": "FuFuUwU"
     },
-
     "records": {
-        "A": ["192.3.34.74"]
-    },
-
-    "proxied": false
+        "CNAME": "bwah.dev"
+    }
 }
